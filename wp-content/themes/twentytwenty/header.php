@@ -23,8 +23,8 @@
 		<?php wp_head(); ?>
 
 	</head>
-
-	<body <?php body_class(); ?>>
+	<?php global $beauty ?>
+	<body <?php body_class(); echo customBodyColor($beauty);?>>
 
 		<?php
 		wp_body_open();

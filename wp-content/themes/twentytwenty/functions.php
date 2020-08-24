@@ -754,3 +754,18 @@ function twentytwenty_get_elements_array() {
 	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+function customBodyColor($beauty) {
+	$param = array();
+	// $styleAddition = style='background-color:{$beauty['section_example_2']}'
+	if( $beauty['body_color'] ) {
+		$param[] = "background-color:{$beauty['body_color']};";
+	}
+	if( $beauty['text_color'] ) {
+		$param[] = "color:{$beauty['text_color']};";
+	}
+
+	return "style='".implode(" ", $param )."'";
+}
+
+require_once (dirname(__FILE__) . '/sample/barebones-config.php');
