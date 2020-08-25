@@ -756,6 +756,9 @@ function twentytwenty_get_elements_array() {
 }
 
 function customBodyColor($beauty) {
+	if( $beauty['customisation_switch'] == false ) {
+		return;
+	}
 	$param = array();
 	// $styleAddition = style='background-color:{$beauty['section_example_2']}'
 	if( $beauty['body_color'] ) {

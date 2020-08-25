@@ -342,6 +342,18 @@ Redux::set_section( $opt_name, $section );
     )
  );
 
+ Redux::setField(
+ 	'beauty',
+ 	array(
+ 			'id'         => 'customisation_switch',
+ 			'type'       => 'switch',
+ 			'section_id' => 'сolor_customisation',
+ 			'title'      => 'Вкл/выкл свои цвета',
+ 			'subtitle'   => 'Выберите любой, какой понравится',
+ 			'desc'       => 'Заменяет цвет шрифта внутри тега <body>',
+ 	)
+ );
+
  Redux::setSection(
    'beauty',
    array(
