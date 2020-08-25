@@ -18,7 +18,11 @@ get_header();
 ?>
 
 <main id="site-content" role="main">
+<?php
 
+// echo do_shortcode('[add_image img="https://unsplash.it/800/450?image=830"]');
+
+?>
 	<?php
 
 	$archive_title    = '';

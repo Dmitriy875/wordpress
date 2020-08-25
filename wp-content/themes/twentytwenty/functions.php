@@ -768,4 +768,62 @@ function customBodyColor($beauty) {
 	return "style='".implode(" ", $param )."'";
 }
 
+// Include Redux-config file
 require_once (dirname(__FILE__) . '/sample/barebones-config.php');
+
+
+// Slider functions
+function getSliderBegin() {
+	return '<div class="wrapper">
+    <div class="slider">
+      <ul class="js__slider__images slider__images">';
+}
+
+function addImageInSlider( $img ) {
+	return '  <li class="slider__images-item"><img class="slider__images-image" src="' . $img[img] . '" /></li>';
+}
+
+function getNavButtons() {
+	return '</ul><div class="slider__controls">
+		<span class="slider__control js__slider__control--prev slider__control--prev">Prev</span>
+
+		<ol class="js__slider__pagers slider__pagers"></ol>
+
+		<span class="slider__control js__slider__control--next slider__control--next">Next</span>';
+}
+
+function endSlider() {
+	return '</div>
+	</div>
+	</div>'; // закрывающий тег div.slider'
+}
+
+
+// Creating slider-shortcodes
+add_shortcode( 'slider','getSliderBegin' );
+
+// Add image in slider__images
+add_shortcode( 'add', 'addImageInSlider' );
+
+// Nav buttons
+add_shortcode( 'nav', 'getNavButtons' );
+
+add_shortcode( 'end-slider', 'endSlider' );
+
+// Регистрируем файл стилей для слайдера
+wp_register_style( 'slider_css', get_template_directory_uri() . '/assets/css/slider.css' );
+
+// Включаем стили слайдера в header
+wp_enqueue_style( 'slider_css' );
+
+// Регистрируем js-скрипты для слайдера
+// wp_register_script( 'slider-js', get_template_directory_uri() . '/assets/js/slider.js'  );
+wp_register_script( 'min-js', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js' );
+wp_register_script( 'modern-js', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.jss' );
+
+// Подключаем JS для слайдера
+wp_enqueue_script( 'min-js' );
+wp_enqueue_script( 'modern-js' );
+
+// Подключаем сам слайдер в footer
+wp_enqueue_script( 'slider-js', get_template_directory_uri() . '/assets/js/slider.js', array(), false, true );
